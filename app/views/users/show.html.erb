@@ -1,0 +1,21 @@
+<h2> <%= @user.name %> <%= @user.email %> </h2>
+<% url = "/users/#{@user.id}/authenticate"%>
+
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+<%= form_tag(url, method: "post") do %>
+  <%= label_tag(:consumer_key, "YOUR_CONSUMER_KEY:") %>
+  <%= text_field_tag(:consumer_key) %>
+  <%= label_tag(:consumer_secret, "YOUR_CONSUMER_SECRET:") %>
+  <%= password_field_tag(:consumer_secret) %>
+  <%= label_tag(:access_token, "YOUR_ACCESS_TOKEN:") %>
+  <%= text_field_tag(:access_token) %>
+  <%= label_tag(:access_token_secret, "YOUR_ACCESS_SECRET:") %>
+  <%= password_field_tag(:access_token_secret) %>
+  <%= submit_tag("Authenticate", class: "btn btn-primary") %>
+<% end %>
+  </div>
+</div>
+
+

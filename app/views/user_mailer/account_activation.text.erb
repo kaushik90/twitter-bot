@@ -1,0 +1,5 @@
+Hello <%= @user.name%>
+
+Welcome to Twitter-Bot, please click on the link below to activate your account. If the link does'nt work, try to paste it in the address bar in a new tab.
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

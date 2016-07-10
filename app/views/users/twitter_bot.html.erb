@@ -1,0 +1,72 @@
+<h1>Connected to your twitter account!</h1>
+<h2> <%= @user.name %></h2>
+<% url = "/users/#{@user.id}/twitter_actions"%>
+<div class = "row">
+<div class = "col-md-4">
+
+  <div class="col-md-10">
+    <%= form_tag(url, method: "get") do %>
+      <%= label_tag(:twitter_handle, "User Handle") %>
+      <%= text_field_tag(:q) %>
+      <%= hidden_field_tag :act, "by" %>
+      <%= submit_tag("Recent 10 tweets By user", class: "btn btn-primary") %>
+    <% end %>
+    <br>
+  </div>
+
+  <div class="col-md-10">
+    <%= form_tag(url, method: "get") do %>
+      <%= label_tag(:twitter_handle, "User Handle") %>
+      <%= text_field_tag(:q) %>
+      <%= hidden_field_tag :act, "to" %>
+      <%= submit_tag("Recent 10 tweets To user", class: "btn btn-primary") %>
+    <% end %>
+    <br>
+  </div>
+
+  <div class="col-md-10">
+    <%= form_tag(url, method: "get") do %>
+      <%= label_tag(:tweet, "Tweet") %>
+      <%= text_field_tag(:q) %>
+      <%= hidden_field_tag :act, "post_tweet" %>
+      <%= submit_tag("Post tweet from my account", class: "btn btn-primary") %>
+    <% end %>
+    <br>
+  </div>
+
+  <div class="col-md-10">
+    <%= form_tag(url, method: "get") do %>
+      <%= label_tag(:twitter_handle, "Hashtag") %>
+      <%= text_field_tag(:q) %>
+      <%= hidden_field_tag :act, "hashtag" %>
+      <%= submit_tag("List recent 10 tweets", class: "btn btn-primary") %>
+    <% end %>
+    <br>
+  </div>
+
+</div>
+
+<div class="col-md-6">
+    <ol class="microposts">
+        <% if @t_objects %>
+            <h2><b><%= @query %></b> Recent 10 tweets</h2>
+            <% if @t_objects.kind_of?(Array) %>
+                    <% @t_objects.each do |obj| %>
+                        <li><span class="content"><%= obj.text %></span></li>
+                    <% end %>
+            <% elsif @t_objects.kind_of?(String)%>
+                <li><span class="content"> <%= @t_objects %></span></li>
+            <% else %> 
+                    <li><span class="content"> <%= @t_objects.text %></span></li>
+            <% end %>
+        <% else %>
+            <h2>There is Nothing to show write now.</h2>
+        <% end %>
+    </ol>
+  </div>
+</div>
+
+
+<div class="row">
+  
+</div>
