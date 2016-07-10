@@ -76,5 +76,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  boiling-harbor-48957.herokuapp.com = { :host => 'boiling-harbor-48957.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'boiling-harbor-48957.herokuapp.com' }
 end
